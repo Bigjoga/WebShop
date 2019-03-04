@@ -24,6 +24,20 @@ public final class SampleDBContract {
                 COLUMN_DESCRIPTION + " TEXT " + ")";
     }
 
+    //user
+
+    public static class User implements BaseColumns{
+        public static final String TABLE_NAME = "user";
+        public static final String COLUMN_ACCOUNT_EMAIL = "email";
+        public static final String COLUMN_ACCOUNT_PASSWORD = "password";
+
+        public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                TABLE_NAME + " (" +
+                _ID + " INTEGER AUTOINCREMENT, " +
+                COLUMN_ACCOUNT_EMAIL + " TEXT PRIMARY KEY NOT NULL, " +
+                COLUMN_ACCOUNT_PASSWORD + " TEXT NOT NULL, " + ")";
+    }
+
     //account
     public static class Account implements BaseColumns{
         public static final String TABLE_NAME = "account";
@@ -52,5 +66,4 @@ public final class SampleDBContract {
                 COLUMN_DESCRIPTION + " TEXT NOT NULL, " + ")";
     }
 
-    //user
 }

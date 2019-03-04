@@ -5,14 +5,16 @@ public class Item {
     private String idNumber;
     private String name;
     private String description;
+    private String price;
 
     public Item() {
     }
 
-    public Item(String idNumber, String name, String description) {
+    public Item(String idNumber, String name, String description, String price) {
         this.idNumber = idNumber;
         this.name = name;
         this.description = description;
+        this.price = price;
     }
 
     public String getIdNumber() {
@@ -39,12 +41,21 @@ public class Item {
         this.description = description;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Item{" +
                 "idNumber='" + idNumber + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", price='" + price + '\'' +
                 '}';
     }
 }
