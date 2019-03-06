@@ -17,17 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        //db.execSQL(" create table " + TABLE_NAME + " (EMAIL INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,SURNAME TEXT,PASSWORD TEXT, TYPE TEXT)");
-        //sqLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS shop (_id INTEGER PRIMARY KEY AUTOINCREMENT, pib TEXT, name TEXT, location TEXT, description TEXT) ");
-        /*sqLiteDatabase.execSQL(SampleDBContract.Shop.CREATE_TABLE);
-        sqLiteDatabase.execSQL(SampleDBContract.Account.CREATE_TABLE);
         sqLiteDatabase.execSQL(SampleDBContract.User.CREATE_TABLE);
-        sqLiteDatabase.execSQL(SampleDBContract.Item.CREATE_TABLE);*/
-        //sqLiteDatabase.execSQL("CREATE TABLE user(email text PRIMARY KEY, password text)");
-
-        sqLiteDatabase.execSQL("CREATE TABLE " + SampleDBContract.User.TABLE_NAME + "( " + SampleDBContract.User.COLUMN_ACCOUNT_EMAIL +
-                " TEXT PRIMARY KEY, " + SampleDBContract.User.COLUMN_ACCOUNT_PASSWORD + " TEXT)");
-
     }
 
     @Override
@@ -41,11 +31,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //addUser
-    public boolean insert(String email, String password){
+    public boolean insert(String email, String password,String name,String surname){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(SampleDBContract.User.COLUMN_ACCOUNT_EMAIL,email);
         cv.put(SampleDBContract.User.COLUMN_ACCOUNT_PASSWORD,password);
+        cv.put(SampleDBContract.User.COLUMN_USER_NAME,name);
+        cv.put(SampleDBContract.User.COLUMN_USER_SURNAME,surname);
         //cv.put("email",email);
         //cv.put("password", password);
         long ins = db.insert(SampleDBContract.User.TABLE_NAME,null,cv);

@@ -30,12 +30,15 @@ public final class SampleDBContract {
         public static final String TABLE_NAME = "user";
         public static final String COLUMN_ACCOUNT_EMAIL = "email";
         public static final String COLUMN_ACCOUNT_PASSWORD = "password";
+        public static final String COLUMN_USER_NAME = "name";
+        public static final String COLUMN_USER_SURNAME = "surname";
 
-        public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
+    public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
-                _ID + " INTEGER AUTOINCREMENT, " +
                 COLUMN_ACCOUNT_EMAIL + " TEXT PRIMARY KEY NOT NULL, " +
-                COLUMN_ACCOUNT_PASSWORD + " TEXT NOT NULL, " + ")";
+                COLUMN_ACCOUNT_PASSWORD + " TEXT NOT NULL, " +
+                COLUMN_USER_NAME + " TEXT NOT NULL," +
+                COLUMN_USER_SURNAME + " TEXT NOT NULL" + ")";
     }
 
     //account
