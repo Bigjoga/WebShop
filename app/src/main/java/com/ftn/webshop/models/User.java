@@ -1,6 +1,9 @@
 package com.ftn.webshop.models;
+import android.database.Cursor;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     public enum Type {ADMIN,REGISTERED,NOREGISTERED}
     private String email;
@@ -63,6 +66,17 @@ public class User {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+
+
+    public void getUserFromCursor(Cursor cursor){
+
+        this.email = cursor.getString(cursor.getColumnIndexOrThrow("email")).toString();
+        this.password = cursor.getString(cursor.getColumnIndexOrThrow("password"));
+        this.name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+        this.surname = cursor.getString(cursor.getColumnIndexOrThrow("surname"));
+
     }
 
     @Override

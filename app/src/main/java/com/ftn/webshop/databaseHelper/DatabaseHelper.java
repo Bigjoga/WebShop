@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.ftn.webshop.models.User;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
@@ -57,11 +59,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //check mail and pass for login
-    public Boolean emailAndPassword(String email, String password){
+    public User login(String email, String password){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM user WHERE email=? AND password=?", new String[]{email,password});
+        cursor.moveToPosition(0);
+
         if(cursor.getCount()>0){
-            return false;
-        }else return true;
+            User u=new User();
+            u.getUserFromCursor(cursor);
+            return u;
+        }else return null;
     }
 }
