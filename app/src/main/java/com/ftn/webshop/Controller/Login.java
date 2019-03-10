@@ -27,9 +27,9 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.login_page);
 
         db = new DatabaseHelper(this);
-        signInEmail = (EditText)findViewById(R.id.emailLoginField);
-        signInPass = (EditText)findViewById(R.id.passwordLoginField);
-        signInButton = (Button)findViewById(R.id.loginButton);
+        signInEmail = findViewById(R.id.emailLoginField);
+        signInPass = findViewById(R.id.passwordLoginField);
+        signInButton = findViewById(R.id.loginButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

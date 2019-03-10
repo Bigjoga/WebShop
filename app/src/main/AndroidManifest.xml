@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Controller.Login"></activity>
+        <activity android:name=".Activity.GridViewItems"></activity>
     </application>
 
 </manifest>

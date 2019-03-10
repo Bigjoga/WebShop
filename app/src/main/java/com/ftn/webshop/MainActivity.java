@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
         //Sign up
-        signName = (EditText)findViewById(R.id.nameField);
-        signSurname = (EditText)findViewById(R.id.surnameField);
-        signEmail = (EditText)findViewById(R.id.emailLoginField);
-        signPass = (EditText)findViewById(R.id.passwordLoginField);
-        signButton = (Button)findViewById(R.id.singUpButton);
+        signName = findViewById(R.id.nameField);
+        signSurname = findViewById(R.id.surnameField);
+        signEmail = findViewById(R.id.emailLoginField);
+        signPass = findViewById(R.id.passwordLoginField);
+        signButton = findViewById(R.id.singUpButton);
         signButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //login
-        signInButton = (Button) findViewById(R.id.loginButton);
+        signInButton = findViewById(R.id.loginButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
