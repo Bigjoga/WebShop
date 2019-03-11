@@ -2,7 +2,7 @@ package com.ftn.webshop.models;
 
 public class Shop {
 
-    private String pib;
+    private Long id;
     private String name;
     private String location;
     private String contact;
@@ -10,19 +10,19 @@ public class Shop {
     public Shop() {
     }
 
-    public Shop(String pib, String name, String location, String contact) {
-        this.pib = pib;
+    public Shop(Long id, String name, String location, String contact) {
+        this.id = id;
         this.name = name;
         this.location = location;
         this.contact = contact;
     }
 
-    public String getPib() {
-        return pib;
+    public Long getPib() {
+        return id;
     }
 
-    public void setPib(String pib) {
-        this.pib = pib;
+    public void setPib(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -52,7 +52,7 @@ public class Shop {
     @Override
     public String toString() {
         return "Shop{" +
-                "pib='" + pib + '\'' +
+                "pib='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", location='" + location + '\'' +
                 ", contact='" + contact + '\'' +

@@ -19,7 +19,7 @@ public class HomeScreen extends AppCompatActivity {
         Intent intent=getIntent();
         User u=(User)intent.getSerializableExtra("user");
         user=findViewById(R.id.usertext);
-        user.setText(user.getText()+ " " + u.getName()+ " " + u.getSurname());
+        user.setText(user.getText()+ " "+ u.getType().toString() + " " + u.getName()+ " " + u.getSurname());
 
     }
 }

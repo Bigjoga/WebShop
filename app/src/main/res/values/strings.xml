@@ -13,4 +13,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="list_of_shops">List of Shops</string>
+    <string name="admin_page">Admin Page</string>
+    <string name="add_manager">Add Manager</string>
+    <string name="list_of_managers">List of Managers</string>
+    <string name="add_shop">Add Shop</string>
 </resources>

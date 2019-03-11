@@ -10,15 +10,14 @@ public final class SampleDBContract {
     //shop
     public static class Shop implements BaseColumns{
         public static final String TABLE_NAME = "shop";
-        public static final String COLUMN_PIB = "pib";
+        public static final String COLUMN_ID = "id";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_LOCATION = "location";
         public static final String COLUMN_DESCRIPTION = "description";
 
         public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
-                _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_PIB + " TEXT NOT NULL, " +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 COLUMN_NAME + " TEXT NOT NULL, " +
                 COLUMN_LOCATION + " TEXT NOT NULL, " +
                 COLUMN_DESCRIPTION + " TEXT " + ")";
@@ -32,13 +31,15 @@ public final class SampleDBContract {
         public static final String COLUMN_ACCOUNT_PASSWORD = "password";
         public static final String COLUMN_USER_NAME = "name";
         public static final String COLUMN_USER_SURNAME = "surname";
+        public static final String COLUMN_USER_TYPE = "type";
 
     public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
                 COLUMN_ACCOUNT_EMAIL + " TEXT PRIMARY KEY NOT NULL, " +
                 COLUMN_ACCOUNT_PASSWORD + " TEXT NOT NULL, " +
                 COLUMN_USER_NAME + " TEXT NOT NULL," +
-                COLUMN_USER_SURNAME + " TEXT NOT NULL" + ")";
+                COLUMN_USER_SURNAME + " TEXT NOT NULL," +
+                COLUMN_USER_TYPE + " TEXT NOT NULL" + ")";
     }
 
     //account

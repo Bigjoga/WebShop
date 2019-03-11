@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    public enum Type {ADMIN,REGISTERED,NOREGISTERED}
+    public enum Type {ADMIN, USER,MANAGER}
     private String email;
     private String name;
     private String surname;
@@ -76,6 +76,15 @@ public class User implements Serializable {
         this.password = cursor.getString(cursor.getColumnIndexOrThrow("password"));
         this.name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
         this.surname = cursor.getString(cursor.getColumnIndexOrThrow("surname"));
+        String typeString=cursor.getString(cursor.getColumnIndexOrThrow("type"));
+
+        if(Type.USER.toString().equals(typeString)){
+            this.type=Type.USER;
+        }else if(Type.MANAGER.toString().equals(typeString)){
+            this.type=Type.MANAGER;
+        }else{
+            this.type=Type.ADMIN;
+        }
 
     }
 

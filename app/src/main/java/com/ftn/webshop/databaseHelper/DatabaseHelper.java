@@ -5,8 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.ftn.webshop.models.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -19,17 +23,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        Log.i("RADI","RADI");
+        sqLiteDatabase.execSQL(SampleDBContract.Shop.CREATE_TABLE);
         sqLiteDatabase.execSQL(SampleDBContract.User.CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        /*sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SampleDBContract.Shop.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SampleDBContract.Account.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SampleDBContract.Item.TABLE_NAME);*/
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SampleDBContract.User.TABLE_NAME);
-
-        //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS user");
     }
 
     //addUser
@@ -40,10 +41,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(SampleDBContract.User.COLUMN_ACCOUNT_PASSWORD,password);
         cv.put(SampleDBContract.User.COLUMN_USER_NAME,name);
         cv.put(SampleDBContract.User.COLUMN_USER_SURNAME,surname);
-        //cv.put("email",email);
-        //cv.put("password", password);
+        cv.put(SampleDBContract.User.COLUMN_USER_TYPE,"USER");
+
         long ins = db.insert(SampleDBContract.User.TABLE_NAME,null,cv);
-        //long ins = db.insert("user",null,cv);
+
 
         if(ins == -1) return false;
         else return true;
@@ -70,4 +71,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return u;
         }else return null;
     }
+
+    public List<User> getAllManagers(){
+        List<User> managers=new ArrayList<User>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM user WHERE type=?", new String[]{"MANAGER"});
+        if(cursor.getCount()>0){
+            cursor.moveToPosition(0);
+            for(int position=0;position<cursor.getCount(); position++){
+                User u=new User();
+                u.getUserFromCursor(cursor);
+                managers.add(u);
+            }
+            return managers;
+        }else return null;
+    }
+
+
 }
