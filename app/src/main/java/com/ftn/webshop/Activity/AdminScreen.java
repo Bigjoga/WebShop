@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.ftn.webshop.Controller.Login;
 import com.ftn.webshop.R;
 import com.ftn.webshop.databaseHelper.DatabaseHelper;
 import com.ftn.webshop.models.User;
@@ -53,10 +57,27 @@ public class AdminScreen extends AppCompatActivity {
 
         }
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
 
-
-
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuLogout:
+                finish();
+                Intent i = new Intent(AdminScreen.this, Login.class);
+                Toast.makeText(getApplicationContext(), "Logging out", + Toast.LENGTH_LONG).show();
+                startActivity(i);
+                break;
+            case R.id.menuSettings:
+                Toast.makeText(getApplicationContext(), "You clicked Settings!", + Toast.LENGTH_LONG).show();
+                break;
+        }
+        return true;
     }
 }

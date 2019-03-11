@@ -17,11 +17,7 @@ public final class SampleDBContract {
 
         public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
-<<<<<<< HEAD
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-=======
-                COLUMN_PIB + " TEXT PRIMARY KEY NOT NULL, " +
->>>>>>> b50232d510eddd0a29ea1cd17405511eff0fdd6e
                 COLUMN_NAME + " TEXT NOT NULL, " +
                 COLUMN_LOCATION + " TEXT NOT NULL, " +
                 COLUMN_DESCRIPTION + " TEXT " + ")";
