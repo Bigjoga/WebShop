@@ -51,9 +51,9 @@ public class HomeScreen extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menuLogout:
-                finish();
                 Intent i = new Intent(HomeScreen.this, Login.class);
                 Toast.makeText(getApplicationContext(), "Logging out", + Toast.LENGTH_LONG).show();
+                finish();
                 startActivity(i);
                 break;
             case R.id.menuSettings:
