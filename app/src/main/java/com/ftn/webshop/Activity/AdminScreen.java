@@ -6,6 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -14,14 +18,19 @@ import android.widget.Toast;
 import com.ftn.webshop.Controller.Login;
 import com.ftn.webshop.R;
 import com.ftn.webshop.databaseHelper.DatabaseHelper;
+import com.ftn.webshop.dialogs.AddManagerDialog;
+import com.ftn.webshop.listAdapters.ManagerListAdapter;
 import com.ftn.webshop.models.User;
 
 import java.util.List;
 
+import javax.net.ssl.ManagerFactoryParameters;
+
 public class AdminScreen extends AppCompatActivity {
 
     DatabaseHelper db;
-    TableLayout tableLayout;
+    ListView listView;
+    Button addManagerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,29 +42,21 @@ public class AdminScreen extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
         List<User> managers=db.getAllManagers();
-        Log.i(managers.toString(),managers.toString());
-        tableLayout = findViewById(R.id.managerTable);
-        for(User user:managers){
-            TableRow tr=new TableRow(this);
-            tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            TextView email = new TextView(this);
-            email.setText(user.getEmail());
-            email.setTextSize(18);
-            email.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            tr.addView(email);
-            TextView name = new TextView(this);
-            name.setText(user.getName());
-            name.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            name.setTextSize(18);
-            tr.addView(name);
-            TextView surname = new TextView(this);
-            surname.setText(user.getSurname());
-            surname.setTextSize(18);
-            surname.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-            tr.addView(surname);
-            tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT));
 
-        }
+        listView = (ListView) findViewById(R.id.managerList);
+        ManagerListAdapter adapter = new ManagerListAdapter(this,managers);
+        listView.setAdapter(adapter);
+
+        listView = findViewById(R.id.managerList);
+        addManagerBtn = findViewById(R.id.addManagerBtn);
+        addManagerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openManagerDialog();
+            }
+        });
+
+
 
     }
 
@@ -69,9 +70,9 @@ public class AdminScreen extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menuLogout:
-                finish();
                 Intent i = new Intent(AdminScreen.this, Login.class);
                 Toast.makeText(getApplicationContext(), "Logging out", + Toast.LENGTH_LONG).show();
+                finish();
                 startActivity(i);
                 break;
             case R.id.menuSettings:
@@ -80,4 +81,12 @@ public class AdminScreen extends AppCompatActivity {
         }
         return true;
     }
+
+    public void openManagerDialog(){
+        AddManagerDialog managerDialog= new AddManagerDialog();
+        managerDialog.show(getSupportFragmentManager(),"manager dialog");
+
+
+    }
+
 }

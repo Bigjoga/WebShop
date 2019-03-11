@@ -41,14 +41,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //addUser
-    public boolean insert(String email, String password,String name,String surname){
+    public boolean insert(String email, String password,String name,String surname, String type){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(SampleDBContract.User.COLUMN_ACCOUNT_EMAIL,email);
         cv.put(SampleDBContract.User.COLUMN_ACCOUNT_PASSWORD,password);
         cv.put(SampleDBContract.User.COLUMN_USER_NAME,name);
         cv.put(SampleDBContract.User.COLUMN_USER_SURNAME,surname);
-        cv.put(SampleDBContract.User.COLUMN_USER_TYPE,"USER");
+        cv.put(SampleDBContract.User.COLUMN_USER_TYPE,type);
 
         long ins = db.insert(SampleDBContract.User.TABLE_NAME,null,cv);
 
@@ -90,6 +90,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 User u=new User();
                 u.getUserFromCursor(cursor);
                 managers.add(u);
+                cursor.moveToPosition(position+1);
+
             }
             return managers;
         }else return null;

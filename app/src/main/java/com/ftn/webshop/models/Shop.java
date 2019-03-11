@@ -6,22 +6,24 @@ public class Shop {
     private String name;
     private String location;
     private String contact;
+    private User manager;
 
     public Shop() {
     }
 
-    public Shop(Long id, String name, String location, String contact) {
+    public Shop(Long id, String name, String location, String contact, User manager) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.contact = contact;
+        this.manager = manager;
     }
 
-    public Long getPib() {
+    public Long getId() {
         return id;
     }
 
-    public void setPib(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,13 +51,23 @@ public class Shop {
         this.contact = contact;
     }
 
+
+    public User getManager() {
+        return manager;
+    }
+
+    public void setManager(User manager) {
+        this.manager = manager;
+    }
+
     @Override
     public String toString() {
         return "Shop{" +
-                "pib='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", location='" + location + '\'' +
                 ", contact='" + contact + '\'' +
+                ", manager=" + manager +
                 '}';
     }
 }

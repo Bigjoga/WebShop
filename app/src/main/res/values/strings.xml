@@ -19,4 +19,5 @@
     <string name="list_of_managers">List of Managers</string>
     <string name="add_shop">Add Shop</string>
     <string name="title_activity_test">Test</string>
+    <string name="name">Name</string>
 </resources>
