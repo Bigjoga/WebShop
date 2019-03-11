@@ -17,7 +17,11 @@ public final class SampleDBContract {
 
         public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
+<<<<<<< HEAD
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+=======
+                COLUMN_PIB + " TEXT PRIMARY KEY NOT NULL, " +
+>>>>>>> b50232d510eddd0a29ea1cd17405511eff0fdd6e
                 COLUMN_NAME + " TEXT NOT NULL, " +
                 COLUMN_LOCATION + " TEXT NOT NULL, " +
                 COLUMN_DESCRIPTION + " TEXT " + ")";
@@ -45,14 +49,14 @@ public final class SampleDBContract {
     //account
     public static class Account implements BaseColumns{
         public static final String TABLE_NAME = "account";
-        public static final String COLUMN_ACCOUNT_ID = "accountId";
+        public static final String COLUMN_ACCOUNT_EMAIL = "accountId";
         public static final String COLUMN_ACCOUNT_NUMBER = "accountNumber";
 
         public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
-                _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_ACCOUNT_ID + " TEXT NOT NULL, " +
-                COLUMN_ACCOUNT_NUMBER + " TEXT NOT NULL, " + ")";
+                COLUMN_ACCOUNT_EMAIL + " TEXT PRIMARY KEY NOT NULL, " +
+                COLUMN_ACCOUNT_NUMBER + " TEXT NOT NULL, " +
+                "FOREIGN KEY (" + Account.COLUMN_ACCOUNT_EMAIL + ") REFERENCES " + User.TABLE_NAME + "( " + User.COLUMN_ACCOUNT_EMAIL + "));";
     }
 
     //item
@@ -64,10 +68,9 @@ public final class SampleDBContract {
 
         public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
-                _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_NUMBER_ID + " TEXT NOT NULL, " +
+                COLUMN_NUMBER_ID + " INTEGER PRIMARY KEY NOT NULL, " +
                 COLUMN_NAME + " TEXT NOT NULL, " +
-                COLUMN_DESCRIPTION + " TEXT NOT NULL, " + ")";
+                COLUMN_DESCRIPTION + " TEXT NOT NULL " + ")";
     }
 
 }

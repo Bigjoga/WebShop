@@ -26,11 +26,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.i("RADI","RADI");
         sqLiteDatabase.execSQL(SampleDBContract.Shop.CREATE_TABLE);
         sqLiteDatabase.execSQL(SampleDBContract.User.CREATE_TABLE);
+        sqLiteDatabase.execSQL(SampleDBContract.Item.CREATE_TABLE);
+        sqLiteDatabase.execSQL(SampleDBContract.Shop.CREATE_TABLE);
+        sqLiteDatabase.execSQL(SampleDBContract.Account.CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SampleDBContract.User.TABLE_NAME);
+<<<<<<< HEAD
+=======
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SampleDBContract.Item.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SampleDBContract.Shop.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SampleDBContract.Account.TABLE_NAME);
+>>>>>>> b50232d510eddd0a29ea1cd17405511eff0fdd6e
     }
 
     //addUser

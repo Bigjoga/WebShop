@@ -22,7 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".Controller.Login" />
+=======
+        <activity android:name=".Controller.Login"></activity>
+        <activity android:name=".Activity.GridViewItems"></activity>
+>>>>>>> b50232d510eddd0a29ea1cd17405511eff0fdd6e
     </application>
 
 </manifest>
