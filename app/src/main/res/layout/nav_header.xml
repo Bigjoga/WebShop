@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/business"
-        android:paddingTop="100dp"
-        android:paddingLeft="50dp"/>
+        android:paddingLeft="50dp"
+        android:paddingTop="150dp"
+        android:src="@drawable/business" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:text="Ubijamo android"/>
+        android:paddingTop="20dp"
+        android:text="Ubijamo android" />
 
     <TextView
         android:layout_width="wrap_content"
