@@ -1,21 +1,26 @@
 package com.ftn.webshop.models;
 
+import android.database.Cursor;
+
 public class Shop {
 
     private Long id;
+    private String imageLocation;
     private String name;
     private String location;
-    private String contact;
+    private String description;
     private User manager;
 
     public Shop() {
+
     }
 
-    public Shop(Long id, String name, String location, String contact, User manager) {
+    public Shop(Long id, String name, String location, String description,String imageLocation, User manager) {
         this.id = id;
         this.name = name;
         this.location = location;
-        this.contact = contact;
+        this.description = description;
+        this.imageLocation=imageLocation;
         this.manager = manager;
     }
 
@@ -43,14 +48,21 @@ public class Shop {
         this.location = location;
     }
 
-    public String getContact() {
-        return contact;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
+    public String getImageLocation() {
+        return imageLocation;
+    }
+
+    public void setImageLocation(String imageLocation) {
+        this.imageLocation = imageLocation;
+    }
 
     public User getManager() {
         return manager;
@@ -60,13 +72,23 @@ public class Shop {
         this.manager = manager;
     }
 
+    public void getShopFromCursor(Cursor cursor){
+
+        this.name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+        this.location = cursor.getString(cursor.getColumnIndexOrThrow("location"));
+        this.description = cursor.getString(cursor.getColumnIndexOrThrow("description"));
+        this.imageLocation = cursor.getString(cursor.getColumnIndexOrThrow("imageLocation"));
+
+    }
+
     @Override
     public String toString() {
         return "Shop{" +
                 "id=" + id +
+                ", imageLocation='" + imageLocation + '\'' +
                 ", name='" + name + '\'' +
                 ", location='" + location + '\'' +
-                ", contact='" + contact + '\'' +
+                ", description='" + description + '\'' +
                 ", manager=" + manager +
                 '}';
     }

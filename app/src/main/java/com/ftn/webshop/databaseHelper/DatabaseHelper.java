@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.ftn.webshop.models.Shop;
 import com.ftn.webshop.models.User;
 
 import java.util.ArrayList;
@@ -24,10 +25,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         Log.i("RADI","RADI");
-        sqLiteDatabase.execSQL(SampleDBContract.Shop.CREATE_TABLE);
         sqLiteDatabase.execSQL(SampleDBContract.User.CREATE_TABLE);
-        sqLiteDatabase.execSQL(SampleDBContract.Item.CREATE_TABLE);
         sqLiteDatabase.execSQL(SampleDBContract.Shop.CREATE_TABLE);
+        sqLiteDatabase.execSQL(SampleDBContract.Item.CREATE_TABLE);
         sqLiteDatabase.execSQL(SampleDBContract.Account.CREATE_TABLE);
     }
 
@@ -57,10 +57,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else return true;
     }
 
+    public boolean insertShop(String name, String location,String description,String imageLocation,String managerEmail){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(SampleDBContract.Shop.COLUMN_NAME,name);
+        cv.put(SampleDBContract.Shop.COLUMN_LOCATION,location);
+        cv.put(SampleDBContract.Shop.COLUMN_DESCRIPTION,description);
+        cv.put(SampleDBContract.Shop.COLUMN_IMAGE_LOCATION,imageLocation);
+        cv.put(SampleDBContract.Shop.COLUMN_MANAGER_EMAIL,managerEmail);
+
+        long ins = db.insert(SampleDBContract.Shop.TABLE_NAME,null,cv);
+
+
+        if(ins == -1) return false;
+        else return true;
+    }
+
     //check does mail exist
     public Boolean checkMail(String mail){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM user WHERE email=?", new String[]{mail});
+        if(cursor.getCount()>0){
+            return false;
+        }else return true;
+    }
+
+    public Boolean checkShopName(String name){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM shop WHERE name=?", new String[]{name});
         if(cursor.getCount()>0){
             return false;
         }else return true;
@@ -94,6 +118,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             }
             return managers;
+        }else return null;
+    }
+
+    public List<Shop> getAllShops(){
+        List<Shop> shops=new ArrayList<Shop>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM shop", null);
+        if(cursor.getCount()>0){
+            cursor.moveToPosition(0);
+            for(int position=0;position<cursor.getCount(); position++){
+                Shop s=new Shop();
+                s.getShopFromCursor(cursor);
+                shops.add(s);
+                cursor.moveToPosition(position+1);
+
+            }
+            return shops;
         }else return null;
     }
 

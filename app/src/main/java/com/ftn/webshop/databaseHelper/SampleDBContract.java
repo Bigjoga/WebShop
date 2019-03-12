@@ -14,15 +14,17 @@ public final class SampleDBContract {
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_LOCATION = "location";
         public static final String COLUMN_DESCRIPTION = "description";
-        public static final String COLUMN_MANAGER_EMAIL = "manager_email";
-        //TODO: OVO NE RADI KAKO TREBA, NISAM ZAVRSIO
+        public static final String COLUMN_IMAGE_LOCATION = "imageLocation";
+        public static final String COLUMN_MANAGER_EMAIL = "managerEmail";
         public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 COLUMN_NAME + " TEXT NOT NULL, " +
                 COLUMN_LOCATION + " TEXT NOT NULL, " +
                 COLUMN_DESCRIPTION + " TEXT NOT NULL," +
-                "FOREIGN KEY (" + Account.COLUMN_ACCOUNT_EMAIL + ") REFERENCES " + User.TABLE_NAME + "( " + User.COLUMN_ACCOUNT_EMAIL + "));";
+                COLUMN_IMAGE_LOCATION + " TEXT NOT NULL," +
+                COLUMN_MANAGER_EMAIL + " TEXT NOT NULL," +
+                "FOREIGN KEY (" + Shop.COLUMN_MANAGER_EMAIL + ") REFERENCES " + User.TABLE_NAME + "( " + User.COLUMN_ACCOUNT_EMAIL + "));";
     }
 
     //user
