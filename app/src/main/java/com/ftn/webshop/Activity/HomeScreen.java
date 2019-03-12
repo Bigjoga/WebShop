@@ -2,6 +2,9 @@ package com.ftn.webshop.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +20,9 @@ import com.ftn.webshop.models.User;
 public class HomeScreen extends AppCompatActivity {
 
     TextView user;
-    Button shopButton;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle drawerToggle;
+    NavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +34,33 @@ public class HomeScreen extends AppCompatActivity {
         user=findViewById(R.id.usertext);
         user.setText(user.getText()+ " "+ u.getType().toString() + " " + u.getName()+ " " + u.getSurname());
 
-        shopButton = findViewById(R.id.goToShop);
-        shopButton.setOnClickListener(new View.OnClickListener() {
+        initInstances();
+    }
+
+    private void initInstances() {
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerToggle = new ActionBarDrawerToggle(HomeScreen.this, drawerLayout, R.string.hello_world, R.string.hello_world);
+        drawerLayout.setDrawerListener(drawerToggle);
+
+        navigation = findViewById(R.id.nav_view);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HomeScreen.this, GridViewItems.class);
-                startActivity(i);
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                switch (id) {
+                    case R.id.nav_profile:
+                        Toast.makeText(getApplicationContext(), "Clicked on Profile!", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.nav_share:
+                        Toast.makeText(getApplicationContext(), "Clicked on Share!", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(HomeScreen.this, GridViewItems.class);
+                        startActivity(i);
+                        break;
+                }
+                return false;
             }
         });
-
 
     }
 

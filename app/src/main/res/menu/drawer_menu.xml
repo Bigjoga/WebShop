@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
@@ -9,11 +7,11 @@
             android:title="Profile" />
     </group>
 
-    <item android:title="Media">
+    <item android:title="Shop">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:title="Share" />
+                android:title="Items" />
         </menu>
     </item>
 
