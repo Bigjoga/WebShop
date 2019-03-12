@@ -140,4 +140,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public List<Shop> getAllManagedShops(String email) {
+        List<Shop> shops=new ArrayList<Shop>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM shop WHERE managerEmail=?", new String[]{email});
+        if(cursor.getCount()>0){
+            cursor.moveToPosition(0);
+            for(int position=0;position<cursor.getCount(); position++){
+                Shop s=new Shop();
+                s.getShopFromCursor(cursor);
+                shops.add(s);
+                cursor.moveToPosition(position+1);
+
+            }
+            return shops;
+        }else return null;
+    }
 }

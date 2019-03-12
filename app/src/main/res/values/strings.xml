@@ -20,4 +20,5 @@
     <string name="add_shop">Add Shop</string>
     <string name="title_activity_test">Test</string>
     <string name="name">Name</string>
+    <string name="manager_page_title">Manager Page</string>
 </resources>

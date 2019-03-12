@@ -57,6 +57,7 @@ public class AdminScreen extends AppCompatActivity {
         if(shops!=null){
             ShopListAdapter adapter = new ShopListAdapter(this,shops);
             shopsListView.setAdapter(adapter);
+
         }
 
 

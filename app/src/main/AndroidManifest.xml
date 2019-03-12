@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activity.ManagerScreen"></activity>
         <activity android:name=".Activity.AdminScreen" />
         <activity android:name=".Activity.HomeScreen" />
         <activity android:name=".MainActivity">

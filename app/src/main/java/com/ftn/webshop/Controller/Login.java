@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.ftn.webshop.Activity.AdminScreen;
 import com.ftn.webshop.Activity.HomeScreen;
+import com.ftn.webshop.Activity.ManagerScreen;
 import com.ftn.webshop.R;
 import com.ftn.webshop.databaseHelper.DatabaseHelper;
 import com.ftn.webshop.models.User;
@@ -47,6 +48,10 @@ public class Login extends AppCompatActivity {
                         Intent adminIntent = new Intent(v.getContext(), AdminScreen.class);
                         adminIntent.putExtra("user", (Serializable) user);
                         startActivity(adminIntent);
+                    }else if(user.getType() == User.Type.MANAGER){
+                        Intent managerIntent = new Intent(v.getContext(), ManagerScreen.class);
+                        managerIntent.putExtra("user", (Serializable) user);
+                        startActivity(managerIntent);
                     }
 
                 }else{
