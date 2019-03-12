@@ -74,7 +74,7 @@ public class AddManagerDialog extends AppCompatDialogFragment {
         managerName = view.findViewById(R.id.managerName);
         managerSurname = view.findViewById(R.id.managerSurname);
         managerEmail = view.findViewById(R.id.managerEmail);
-        managerPassword = view.findViewById(R.id.managerEmail);
+        managerPassword = view.findViewById(R.id.managerPassword);
         return builder.create();
     }
 }
