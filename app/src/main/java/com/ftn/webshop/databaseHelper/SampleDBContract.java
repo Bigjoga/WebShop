@@ -62,15 +62,23 @@ public final class SampleDBContract {
     //item
     public static class Item implements BaseColumns{
         public static final String TABLE_NAME = "item";
-        public static final String COLUMN_NUMBER_ID = "idNumber";
+        public static final String COLUMN_ID= "id";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_DESCRIPTION = "description";
+        public static final String COLUMN_PRICE = "price";
+        public static final String COLUMN_IMAGE_LOCATION = "imageLocation";
+        public static final String COLUMN_SHOP_ID= "shop_id";
 
         public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
-                COLUMN_NUMBER_ID + " INTEGER PRIMARY KEY NOT NULL, " +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 COLUMN_NAME + " TEXT NOT NULL, " +
-                COLUMN_DESCRIPTION + " TEXT NOT NULL " + ")";
+                COLUMN_DESCRIPTION + " TEXT NOT NULL, " +
+                COLUMN_PRICE + " INTEGER NOT NULL, " +
+                COLUMN_IMAGE_LOCATION + " TEXT NOT NULL, " +
+                COLUMN_SHOP_ID + " INTEGER NOT NULL, " +
+                "FOREIGN KEY (" + Item.COLUMN_SHOP_ID + ") REFERENCES " + Shop.TABLE_NAME + "( " + Shop.COLUMN_ID + "));";
+
     }
 
 }

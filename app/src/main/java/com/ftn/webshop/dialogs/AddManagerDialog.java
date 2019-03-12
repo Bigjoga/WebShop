@@ -32,6 +32,11 @@ public class AddManagerDialog extends AppCompatDialogFragment {
         LayoutInflater inflater= getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.manager_dialog,null);
 
+        managerName = view.findViewById(R.id.managerName);
+        managerSurname = view.findViewById(R.id.managerSurname);
+        managerEmail = view.findViewById(R.id.managerEmail);
+        managerPassword = view.findViewById(R.id.managerPassword);
+
         builder.setView(view);
         builder.setTitle("Add Manager");
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -43,6 +48,8 @@ public class AddManagerDialog extends AppCompatDialogFragment {
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
+
 
                 String name = managerName.getText().toString();
                 String surname = managerSurname.getText().toString();
@@ -69,12 +76,6 @@ public class AddManagerDialog extends AppCompatDialogFragment {
                 }
             }
         });
-
-
-        managerName = view.findViewById(R.id.managerName);
-        managerSurname = view.findViewById(R.id.managerSurname);
-        managerEmail = view.findViewById(R.id.managerEmail);
-        managerPassword = view.findViewById(R.id.managerPassword);
         return builder.create();
     }
 }

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.ftn.webshop.models.Item;
 import com.ftn.webshop.models.Shop;
 import com.ftn.webshop.models.User;
 
@@ -67,6 +68,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(SampleDBContract.Shop.COLUMN_MANAGER_EMAIL,managerEmail);
 
         long ins = db.insert(SampleDBContract.Shop.TABLE_NAME,null,cv);
+
+
+        if(ins == -1) return false;
+        else return true;
+    }
+
+    public boolean insertItem(String name, String description,int price,String imageLocation,String shop_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(SampleDBContract.Item.COLUMN_NAME,name);
+        cv.put(SampleDBContract.Item.COLUMN_PRICE,price);
+        cv.put(SampleDBContract.Item.COLUMN_DESCRIPTION,description);
+        cv.put(SampleDBContract.Item.COLUMN_IMAGE_LOCATION,imageLocation);
+        cv.put(SampleDBContract.Item.COLUMN_SHOP_ID,shop_id);
+
+        long ins = db.insert(SampleDBContract.Item.TABLE_NAME,null,cv);
 
 
         if(ins == -1) return false;
@@ -156,5 +173,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             return shops;
         }else return null;
+    }
+
+    public Shop getshopByName(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM shop WHERE name=?", new String[]{name});
+        if(cursor.getCount()>0){
+            cursor.moveToPosition(0);
+            for(int position=0;position<cursor.getCount(); position++){
+                Shop s=new Shop();
+                s.getShopFromCursor(cursor);
+                return s;
+            }
+        }
+        return null;
+    }
+
+    public List<Item> getAllItemsFromShop(Long id) {
+        List<Item> items=new ArrayList<Item>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM item WHERE shop_id=?", new String[]{Long.toString(id)});
+        if(cursor.getCount()>0){
+            cursor.moveToPosition(0);
+            for(int position=0;position<cursor.getCount(); position++){
+                Item i=new Item();
+                i.getShopFromCursor(cursor);
+                items.add(i);
+                cursor.moveToPosition(position+1);
+
+            }
+            return items;
+        }else return null;
+
+
     }
 }

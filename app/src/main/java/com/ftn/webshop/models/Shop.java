@@ -2,7 +2,9 @@ package com.ftn.webshop.models;
 
 import android.database.Cursor;
 
-public class Shop {
+import java.io.Serializable;
+
+public class Shop implements Serializable {
 
     private Long id;
     private String imageLocation;
@@ -73,7 +75,7 @@ public class Shop {
     }
 
     public void getShopFromCursor(Cursor cursor){
-
+        this.id= cursor.getLong(cursor.getColumnIndexOrThrow("id"));
         this.name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
         this.location = cursor.getString(cursor.getColumnIndexOrThrow("location"));
         this.description = cursor.getString(cursor.getColumnIndexOrThrow("description"));

@@ -46,21 +46,6 @@ public class AdminScreen extends AppCompatActivity {
         User u=(User)intent.getSerializableExtra("user");
 
         db = new DatabaseHelper(this);
-        List<User> managers=db.getAllManagers();
-        manageresListView = (ListView) findViewById(R.id.managerList);
-        if(managers!=null){
-            ManagerListAdapter adapter = new ManagerListAdapter(this,managers);
-            manageresListView.setAdapter(adapter);
-        }
-        List<Shop> shops=db.getAllShops();
-        shopsListView = (ListView) findViewById(R.id.shopList);
-        if(shops!=null){
-            ShopListAdapter adapter = new ShopListAdapter(this,shops);
-            shopsListView.setAdapter(adapter);
-
-        }
-
-
 
         manageresListView = findViewById(R.id.managerList);
         shopsListView = findViewById(R.id.shopList);
@@ -79,8 +64,19 @@ public class AdminScreen extends AppCompatActivity {
             }
         });
 
+        List<User> managers=db.getAllManagers();
+        manageresListView = (ListView) findViewById(R.id.managerList);
+        if(managers!=null){
+            ManagerListAdapter adapter = new ManagerListAdapter(this,managers);
+            manageresListView.setAdapter(adapter);
+        }
+        List<Shop> shops=db.getAllShops();
+        shopsListView = (ListView) findViewById(R.id.shopList);
+        if(shops!=null){
+            ShopListAdapter adapter = new ShopListAdapter(this,shops);
+            shopsListView.setAdapter(adapter);
 
-
+        }
     }
 
     @Override
@@ -113,8 +109,6 @@ public class AdminScreen extends AppCompatActivity {
     public void openSHopDialog(){
         AddShopDialog shopDialog= new AddShopDialog();
         shopDialog.show(getSupportFragmentManager(),"shop dialog");
-
-
     }
 
 }

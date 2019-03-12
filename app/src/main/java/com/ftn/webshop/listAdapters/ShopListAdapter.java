@@ -46,7 +46,7 @@ public class ShopListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-       View itemView=convertView;
+        View itemView=convertView;
         itemView=(itemView == null) ? inflater.inflate(R.layout.shop_list_view,null): itemView;
         TextView name = (TextView) itemView.findViewById(R.id.shopName);
         TextView description = (TextView) itemView.findViewById(R.id.shopDescription);
@@ -58,8 +58,6 @@ public class ShopListAdapter extends BaseAdapter {
         description.setText(selectedShop.getDescription());
         location.setText(selectedShop.getLocation());
         String imageLocation=selectedShop.getImageLocation();
-
-        
 
         int drawableID = context.getResources().getIdentifier(imageLocation, "drawable", context.getPackageName());
         image.setImageResource(drawableID);
