@@ -17,6 +17,7 @@
         <activity android:name=".Activity.ManagerScreen" />
         <activity android:name=".Activity.AdminScreen" />
         <activity android:name=".Activity.HomeScreen" />
+        <activity android:name=".Activity.GridViewItems" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +26,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Controller.Login" />
-        <activity android:name=".Activity.GridViewItems" />
     </application>
 
 </manifest>

@@ -1,52 +1,57 @@
 package com.ftn.webshop.Activity;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.ftn.webshop.R;
+import com.ftn.webshop.models.Item;
 
-public class GridViewItems extends Activity {
+import java.util.List;
 
-    GridView gridView;
 
-    static final String[] numbers = new String[] {
-            "A", "B", "C", "D", "E",
-            "F", "G", "H", "I", "J",
-            "K", "L", "M", "N", "O",
-            "P", "Q", "R", "S", "T",
-            "U", "V", "W", "X", "Y", "Z",
-            "1", "2", "3", "4", "5",
-            "P", "Q", "R", "S", "T",
-            "P", "Q", "R", "S", "T",
-            "P", "Q", "R", "S", "T",
-            "P", "Q", "R", "S", "T",
-            "P", "Q", "R", "S", "T",
-            "P", "Q", "R", "S", "T",
-            "P", "Q", "R", "S", "T",
-    };
+public class GridViewItems extends RecyclerView.Adapter<GridViewItems.ViewHolder> {
+
+    private Context mContext;
+    private List<Item> mData;
+
+    public GridViewItems(Context mContext, List<Item> mData) {
+        this.mContext = mContext;
+        this.mData = mData;
+    }
+
+    
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
+        View view;
+        LayoutInflater mInflater = LayoutInflater.from(mContext);
+        view = mInflater.inflate(R.layout.shop_page);
+        
+
+        return null;
+    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.shop_page);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
-        gridView = findViewById(R.id.gridView1);
+    }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, numbers);
+    @Override
+    public int getItemCount() {
+        return mData.size();
+    }
 
-        gridView.setAdapter(adapter);
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        /*gridView.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
+        public ViewHolder(View itemView){
+            super(itemView);
+        }
     }
 
 }
