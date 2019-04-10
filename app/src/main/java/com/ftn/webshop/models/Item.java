@@ -9,13 +9,13 @@ public class Item {
     private String description;
     private int price;
     private String imageLocation;
-    private String shop_id;
+    private Long shop_id;
 
 
     public Item() {
     }
 
-    public Item(Long id, String name, String description, int price, String imageLocation, String shop_id) {
+    public Item(Long id, String name, String description, int price, String imageLocation, Long shop_id) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -64,11 +64,11 @@ public class Item {
         this.imageLocation = imageLocation;
     }
 
-    public String getShop_id() {
+    public Long getShop_id() {
         return shop_id;
     }
 
-    public void setShop_id(String shop_id) {
+    public void setShop_id(Long shop_id) {
         this.shop_id = shop_id;
     }
 
@@ -90,6 +90,7 @@ public class Item {
         this.price = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("price")));
         this.description = cursor.getString(cursor.getColumnIndexOrThrow("description"));
         this.imageLocation = cursor.getString(cursor.getColumnIndexOrThrow("imageLocation"));
+        this.shop_id = cursor.getLong(cursor.getColumnIndexOrThrow("shop_id"));
 
     }
 }

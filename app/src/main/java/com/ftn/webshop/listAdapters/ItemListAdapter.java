@@ -61,6 +61,7 @@ public class ItemListAdapter extends BaseAdapter {
         String imageLocation = selectedItem.getImageLocation();
 
         int drawableID = context.getResources().getIdentifier(imageLocation, "drawable", context.getPackageName());
+
         image.setImageResource(drawableID);
 
 

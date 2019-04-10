@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <EditText
         android:id="@+id/shopDescription"
@@ -16,6 +17,7 @@
         android:ems="10"
         android:hint="Shop Description"
         android:inputType="textEmailAddress"
+        android:background="@drawable/edit_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +33,7 @@
         android:ems="10"
         android:hint="Shop Name"
         android:inputType="textPersonName"
+        android:background="@drawable/edit_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +49,7 @@
         android:ems="10"
         android:hint="Shop Location"
         android:inputType="textPersonName"
+        android:background="@drawable/edit_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +65,7 @@
         android:ems="10"
         android:hint="Image Location"
         android:inputType="textEmailAddress"
+        android:background="@drawable/edit_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.ftn.webshop.Controller.Login;
 import com.ftn.webshop.R;
 import com.ftn.webshop.models.User;
+import com.mahfa.dnswitch.DayNightSwitchListener;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -23,6 +24,8 @@ public class HomeScreen extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     NavigationView navigation;
+
+    View background_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,7 @@ public class HomeScreen extends AppCompatActivity {
         Intent intent=getIntent();
         User u=(User)intent.getSerializableExtra("user");
         user=findViewById(R.id.usertext);
-        user.setText(user.getText()+ " "+ u.getType().toString() + " " + u.getName()+ " " + u.getSurname());
+        user.setText(user.getText()+ " " +/*+ u.getType().toString() + " " + */u.getName()+ " " + u.getSurname());
 
         initInstances();
     }
@@ -80,7 +83,9 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.menuSettings:
+                Intent in = new Intent(HomeScreen.this, DayNightSwitch.class);
                 Toast.makeText(getApplicationContext(), "You clicked Settings!", + Toast.LENGTH_LONG).show();
+                startActivity(in);
                 break;
         }
         return true;

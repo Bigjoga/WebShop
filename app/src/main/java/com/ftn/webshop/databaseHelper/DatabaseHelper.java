@@ -208,4 +208,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+
+    public List<Item> getAllItems() {
+        List<Item> items=new ArrayList<Item>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM item", new String[]{});
+        if(cursor.getCount()>0){
+            cursor.moveToPosition(0);
+            for(int position=0;position<cursor.getCount(); position++){
+                Item i=new Item();
+                i.getShopFromCursor(cursor);
+                items.add(i);
+                cursor.moveToPosition(position+1);
+
+            }
+            return items;
+        }else return null;
+
+
+    }
 }
