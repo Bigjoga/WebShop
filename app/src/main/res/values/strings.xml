@@ -23,4 +23,13 @@
     <string name="manager_page_title">Manager Page</string>
     <string name="add_item">Add Item</string>
     <string name="hello_world">Hello world</string>
+    <string name="currency">€</string>
+    <string name="defaultItemCount">0</string>
+    <string name="add">Add</string>
+    <string name="minusSign">-</string>
+    <string name="plusSign">+</string>
+    <string name="nameLabel">Name:</string>
+    <string name="surnameLabel">Surname:</string>
+    <string name="emailLabel">Email:</string>
+    <string name="passwordLabel">Password:</string>
 </resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+
+
+    android:weightSum="100">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:contentDescription="Item Image"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="263dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:textAlignment="center"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="55dp"
+            android:layout_height="41dp"
+            android:layout_alignTop="@+id/itemName"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="59dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:textAlignment="textEnd"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/euroSign"
+            android:layout_width="12dp"
+            android:layout_height="41dp"
+            android:layout_alignTop="@+id/itemName"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="59dp"
+            android:layout_toEndOf="@+id/itemPrice"
+            android:text="@string/currency"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/minusBtn"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_below="@+id/itemName"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/euroSign"
+            android:text="@string/minusSign"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/itemCount"
+            android:layout_width="54dp"
+            android:layout_height="41dp"
+            android:layout_below="@+id/itemName"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/minusBtn"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/defaultItemCount"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/plusBtn"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_alignTop="@+id/itemCount"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/itemCount"
+            android:text="@string/plusSign"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="60dp"
+            android:layout_height="41dp"
+            android:layout_alignTop="@+id/itemCount"
+            android:layout_marginStart="-1dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/plusBtn"
+            android:text="@string/add" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

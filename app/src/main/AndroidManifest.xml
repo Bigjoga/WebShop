@@ -13,12 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ManagerShopView"></activity>
+        <activity android:name=".Activity.ProfileScreen"></activity>
+        <activity android:name=".Activity.ManagerShopView" />
         <activity android:name=".Activity.ManagerScreen" />
         <activity android:name=".Activity.AdminScreen" />
         <activity android:name=".Activity.HomeScreen" />
         <activity android:name=".Activity.GridViewItems" />
-        <activity android:name=".Activity.DayNightSwitch"/>
+        <activity android:name=".Activity.DayNightSwitch" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

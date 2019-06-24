@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String email = signInEmail.getText().toString();
                 String pass = signInPass.getText().toString();
-                User user=db.login(email,pass);
+                User user = db.login(email,pass);
                 if(user!= null){
                     Toast.makeText(getApplicationContext(), "Successfully login!", Toast.LENGTH_LONG).show();
                     if(user.getType()== User.Type.USER){

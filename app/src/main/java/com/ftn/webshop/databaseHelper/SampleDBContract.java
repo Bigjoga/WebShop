@@ -1,6 +1,14 @@
 package com.ftn.webshop.databaseHelper;
 
 import android.provider.BaseColumns;
+import android.util.Base64;
+import android.widget.BaseAdapter;
+
+import com.ftn.webshop.models.Item;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public final class SampleDBContract {
 
@@ -81,4 +89,9 @@ public final class SampleDBContract {
 
     }
 
+    public static class ShoppingCart implements BaseColumns{
+        private HashMap<Item, Integer> map;
+        JSONObject jso = new JSONObject( map );
+      //  String encoded = new String(Base64.encodeToString(jso.toString().getBytes());
+    }
 }

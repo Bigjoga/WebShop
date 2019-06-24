@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_profile"
-            android:title="Profile" />
-    </group>
-
-    <item android:title="Shop">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:title="Items" />
-        </menu>
-    </item>
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_icon"
+        android:title="Home" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile_icon"
+        android:title="Profile" />
+    <item
+        android:id="@+id/nav_cart"
+        android:icon="@drawable/cart_icon"
+        android:title="Shopping cart" />
 
 </menu>

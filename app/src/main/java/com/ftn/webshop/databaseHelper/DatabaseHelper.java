@@ -120,6 +120,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }else return null;
     }
 
+    public User changeInfo(User u, String name, String surname,String email, String password ){
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues cv= new ContentValues();
+        cv.put(SampleDBContract.User.COLUMN_ACCOUNT_EMAIL,email);
+        cv.put(SampleDBContract.User.COLUMN_ACCOUNT_PASSWORD,password);
+        cv.put(SampleDBContract.User.COLUMN_USER_NAME,name);
+        cv.put(SampleDBContract.User.COLUMN_USER_SURNAME,surname);
+        db.update("user",cv,SampleDBContract.User.COLUMN_ACCOUNT_EMAIL+"=?",new String[]{u.getEmail()});
+        return login(email,password);
+}
+
     public List<User> getAllManagers(){
         List<User> managers=new ArrayList<User>();
 
@@ -225,7 +236,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             return items;
         }else return null;
+    }
 
-
+    public List<Item> getFilteredItems(String filter, Shop selectedShop) {
+        List<Item> items=new ArrayList<Item>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM item", new String[]{});
+        if(cursor.getCount()>0){
+            cursor.moveToPosition(0);
+            for(int position=0;position<cursor.getCount(); position++){
+                Item i=new Item();
+                i.getShopFromCursor(cursor);
+                if (i.getName().toLowerCase().contains(filter.toLowerCase()) && (selectedShop.getId() == i.getShop_id() || selectedShop.getId() == null)) {
+                    items.add(i);
+                }
+                cursor.moveToPosition(position+1);
+            }
+            return items;
+        }else return null;
     }
 }

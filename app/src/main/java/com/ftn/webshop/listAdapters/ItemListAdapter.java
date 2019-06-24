@@ -49,13 +49,11 @@ public class ItemListAdapter extends BaseAdapter {
         View itemView = convertView;
         itemView=(itemView == null) ? inflater.inflate(R.layout.item_list_view,null): itemView;
         TextView name = (TextView) itemView.findViewById(R.id.itemName);
-        TextView description = (TextView) itemView.findViewById(R.id.itemDescription);
         TextView price = (TextView) itemView.findViewById(R.id.itemPrice);
         ImageView image= (ImageView) itemView.findViewById(R.id.imageView);
         Item selectedItem = items.get(position);
 
         name.setText(selectedItem.getName());
-        description.setText(selectedItem.getDescription());
         String priceString=Long.toString(selectedItem.getPrice());
         price.setText(priceString);
         String imageLocation = selectedItem.getImageLocation();

@@ -11,6 +11,7 @@ public class User implements Serializable {
     private String surname;
     private String password;
     private Type type;
+    private ShoppingCart shoppingCart;
 
     public User() {
     }
@@ -24,6 +25,7 @@ public class User implements Serializable {
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.shoppingCart = new ShoppingCart();
     }
 
     public User(String email, String name, String surname, String password, Type type) {
@@ -82,7 +84,7 @@ public class User implements Serializable {
         this.password = cursor.getString(cursor.getColumnIndexOrThrow("password"));
         this.name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
         this.surname = cursor.getString(cursor.getColumnIndexOrThrow("surname"));
-        String typeString=cursor.getString(cursor.getColumnIndexOrThrow("type"));
+        String typeString = cursor.getString(cursor.getColumnIndexOrThrow("type"));
 
         if(Type.USER.toString().equals(typeString)){
             this.type=Type.USER;
