@@ -1,10 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.Mahfa:DayNightSwitch:1.2@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/DayNightSwitch-1.2.aar/ea05edbdfe54aaea50c68cc0d200b198/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/DayNightSwitch-1.2.aar/ea05edbdfe54aaea50c68cc0d200b198/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/DayNightSwitch-1.2.aar/521a60f6c041dde7b55b70161ae7a5c4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/DayNightSwitch-1.2.aar/521a60f6c041dde7b55b70161ae7a5c4/res" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Mahfa/DayNightSwitch/1.2/c6575e487e4ce248fcf62f0a5911f0c51e7fb263/DayNightSwitch-1.2-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

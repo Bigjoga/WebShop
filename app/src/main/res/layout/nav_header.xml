@@ -16,12 +16,12 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingTop="20dp"
-        android:text="Ubijamo android" />
+        android:text="Android programiranje" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:text="Tim19@gmail.com" />
+        android:text="Nikola Gajic" />
 
 </LinearLayout>

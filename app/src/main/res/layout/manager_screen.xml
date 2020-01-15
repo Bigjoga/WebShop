@@ -24,7 +24,7 @@
 
     <ListView
         android:id="@+id/shopList"
-        android:layout_width="412dp"
+        android:layout_width="fill_parent"
         android:layout_height="541dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"

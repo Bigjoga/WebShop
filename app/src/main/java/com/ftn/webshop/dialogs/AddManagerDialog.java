@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -76,6 +77,9 @@ public class AddManagerDialog extends AppCompatDialogFragment {
                 }
             }
         });
+
+        //AlertDialog alert = builder.create();
+        //alert.getWindow().setLayout(600,400);
         return builder.create();
     }
 }
