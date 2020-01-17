@@ -52,7 +52,7 @@ public class ManagerScreen extends AppCompatActivity {
                 startActivity(shopIntent);
 
 
-                Toast.makeText(view.getContext(), "Shop :" + parent.getItemAtPosition(position),Toast.LENGTH_LONG).show();
+                //Toast.makeText(view.getContext(), "Shop :" + parent.getItemAtPosition(position),Toast.LENGTH_LONG).show();
 
             }
         });

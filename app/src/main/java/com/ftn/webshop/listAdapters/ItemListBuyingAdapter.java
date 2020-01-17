@@ -2,6 +2,7 @@ package com.ftn.webshop.listAdapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,9 +13,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ftn.webshop.Activity.DetailItemView;
+import com.ftn.webshop.Activity.HomeScreen;
 import com.ftn.webshop.R;
 import com.ftn.webshop.models.Item;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class ItemListBuyingAdapter extends BaseAdapter {
@@ -55,6 +59,7 @@ public class ItemListBuyingAdapter extends BaseAdapter {
         TextView price = (TextView) itemView.findViewById(R.id.itemPrice);
         ImageView image = (ImageView) itemView.findViewById(R.id.imageView);
         final Button add = itemView.findViewById(R.id.plusBtn);
+        //Button detailButton = itemView.findViewById(R.id.addBtn);
         final TextView itemCount = (TextView) itemView.findViewById(R.id.itemCount);
         itemCount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -99,6 +104,27 @@ public class ItemListBuyingAdapter extends BaseAdapter {
                 itemCount.setText(Integer.toString(count));
             }
         });
+
+        final Button detail = itemView.findViewById(R.id.addBtn);
+        detail.setFocusable(false);
+        detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent detailIntent = new Intent(view.getContext(), DetailItemView.class);
+                view.getContext().startActivity(detailIntent);
+            }
+        });
+
+        /*detailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //context.startActivity(new Intent(context, DetailItemView.class));
+                Intent detailListIntent = new Intent(v.getContext(), DetailItemView.class);//.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //context.startActivity(detailListIntent);
+                v.getContext().startActivity(detailListIntent);
+            }
+        });*/
+
         Item selectedItem = items.get(position);
         name.setText(selectedItem.getName());
         String priceString = Long.toString(selectedItem.getPrice());

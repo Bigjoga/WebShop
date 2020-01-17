@@ -13,6 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBPViXYHptdVvKjeQzjIMKYsXSwtgDnFPo"/>
+
         <activity android:name=".Activity.ProfileScreen"></activity>
         <activity android:name=".Activity.ManagerShopView" />
         <activity android:name=".Activity.ManagerScreen" />
@@ -20,6 +25,7 @@
         <activity android:name=".Activity.HomeScreen" />
         <activity android:name=".Activity.GridViewItems" />
         <activity android:name=".Activity.DayNightSwitch" />
+        <activity android:name=".Activity.DetailItemView" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

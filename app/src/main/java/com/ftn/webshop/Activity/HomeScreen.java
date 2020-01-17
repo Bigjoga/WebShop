@@ -64,17 +64,20 @@ public class HomeScreen extends AppCompatActivity {
             shopSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                     List<Item> items = db.getFilteredItems(searchFilter.getText().toString(),(Shop)shopSpinner.getSelectedItem());
                     if(items != null){
                         ItemListBuyingAdapter adapter = new ItemListBuyingAdapter(c,items);
                         itemListView.setAdapter(adapter);
                     }
 
+
                 }
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
 
                 }
+
             });
         }
 

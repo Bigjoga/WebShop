@@ -17,6 +17,7 @@ public class Shop implements Serializable {
 
     }
 
+
     public Shop(Long id, String name, String location, String description,String imageLocation, User manager) {
         this.id = id;
         this.name = name;

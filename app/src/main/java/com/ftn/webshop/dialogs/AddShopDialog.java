@@ -8,15 +8,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import android.support.constraint.ConstraintLayout;
 import com.ftn.webshop.Activity.AdminScreen;
 import com.ftn.webshop.R;
 import com.ftn.webshop.databaseHelper.DatabaseHelper;
 import com.ftn.webshop.listAdapters.ManagerListAdapter;
+import com.ftn.webshop.models.Shop;
 import com.ftn.webshop.models.User;
 
 import java.util.List;
@@ -29,6 +31,7 @@ public class AddShopDialog  extends AppCompatDialogFragment {
     private EditText imageLocation;
     private Spinner shopSpinner;
     private String managerEmail;
+    private Button chooseImage;
     DatabaseHelper db;
 
     @Override
@@ -41,6 +44,7 @@ public class AddShopDialog  extends AppCompatDialogFragment {
 
         db = new DatabaseHelper(getContext());
         List<User> managers=db.getAllManagers();
+
 
         builder.setView(view);
         builder.setTitle("Add Shop");
@@ -83,7 +87,7 @@ public class AddShopDialog  extends AppCompatDialogFragment {
         shopName = view.findViewById(R.id.shopName);
         shopLocation = view.findViewById(R.id.shopLocation);
         shopDescription = view.findViewById(R.id.shopDescription);
-        imageLocation = view.findViewById(R.id.shopImageLocation);
+        //imageLocation = view.findViewById(R.id.shopImag);
         shopSpinner = (Spinner) view.findViewById(R.id.shopSpinner);
 
         if(managers!=null){
