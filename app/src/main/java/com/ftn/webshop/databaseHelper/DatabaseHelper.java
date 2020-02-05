@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "WebShop.db";
-
+    public static int selectedItem = 0;
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -129,7 +129,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(SampleDBContract.User.COLUMN_USER_SURNAME,surname);
         db.update("user",cv,SampleDBContract.User.COLUMN_ACCOUNT_EMAIL+"=?",new String[]{u.getEmail()});
         return login(email,password);
-}
+    }
 
     public List<User> getAllManagers(){
         List<User> managers=new ArrayList<User>();
@@ -164,6 +164,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             }
             return shops;
+        }else return null;
+    }
+
+    public Shop getShopById(Long id) {
+        Shop shops;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM shop WHERE id = " + id, null);
+        if(cursor.getCount()>0){
+            cursor.moveToPosition(0);
+            Shop s=new Shop();
+            s.getShopFromCursor(cursor);
+
+            return s;
+        }else return null;
+    }
+
+    public Item getItemById(Long id) {
+        Item item;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM item WHERE id = " + id, null);
+        if(cursor.getCount()>0){
+            cursor.moveToPosition(0);
+            Item i=new Item();
+            i.getShopFromCursor(cursor);
+
+            return i;
         }else return null;
     }
 
@@ -254,5 +282,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             return items;
         }else return null;
+    }
+
+    public static int getSelectedItem() {
+        return selectedItem;
+    }
+
+    public static void setSelectedItem(int i) {
+        selectedItem = i;
     }
 }

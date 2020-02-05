@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.ftn.webshop.Activity.DetailItemView;
 import com.ftn.webshop.Activity.HomeScreen;
 import com.ftn.webshop.R;
+import com.ftn.webshop.databaseHelper.DatabaseHelper;
 import com.ftn.webshop.models.Item;
 
 import java.io.Serializable;
@@ -51,7 +52,7 @@ public class ItemListBuyingAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View itemView = convertView;
         itemView=(itemView == null) ? inflater.inflate(R.layout.item_list_buying_view,null): itemView;
 
@@ -110,8 +111,10 @@ public class ItemListBuyingAdapter extends BaseAdapter {
         detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DatabaseHelper.setSelectedItem(items.get(position).getId().intValue());
                 Intent detailIntent = new Intent(view.getContext(), DetailItemView.class);
                 view.getContext().startActivity(detailIntent);
+
             }
         });
 
